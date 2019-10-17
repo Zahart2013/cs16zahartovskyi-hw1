@@ -42,7 +42,7 @@ public class TemperatureSeriesAnalysis {
         double sum = 0;
         double aver = this.average();
         for (int i = 0; i < size; i++) {
-            sum += (this.temperatureSeries[i] - aver) * (this.temperatureSeries[i] - aver);
+            sum += Math.pow(this.temperatureSeries[i] - aver, 2);
         }
         return Math.sqrt(sum / size);
     }
