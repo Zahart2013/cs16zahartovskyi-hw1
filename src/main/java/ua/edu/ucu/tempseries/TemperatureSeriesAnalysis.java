@@ -5,9 +5,9 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
 
-    static final int MIN = -273;
     private double[] temperatureSeries;
     private int size;
+    static final int MIN = -273;
 
     public TemperatureSeriesAnalysis() {
         throw new IllegalArgumentException();
