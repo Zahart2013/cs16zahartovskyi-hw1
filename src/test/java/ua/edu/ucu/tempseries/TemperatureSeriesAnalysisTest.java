@@ -1,12 +1,18 @@
 package ua.edu.ucu.tempseries;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.Ignore;
 
 import java.util.Arrays;
 
 public class TemperatureSeriesAnalysisTest {
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testTemperatureSeriesGen() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+    }
 
     @Test
     public void testAverageWithOneElementArray() {
@@ -38,8 +44,8 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 1.0;
 
         double actualResult = seriesAnalysis.average();
-        
-        assertEquals(expResult, actualResult, 0.00001);        
+
+        assertEquals(expResult, actualResult, 0.00001);
     }
 
     @Test
@@ -179,5 +185,15 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expDev, res.getDevTemp(), 0.00001);
         assertEquals(expMin, res.getMinTemp(), 0.00001);
         assertEquals(expMax, res.getMaxTemp(), 0.00001);
+    }
+
+    @Test
+    public void testAddTemps(){
+        double[] temperatureSeries = {2.0, 5.0, -1.0, -2.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int expRes = 6;
+        double[] testArray = new double[] {4.0, 2.0};
+
+        assertEquals(seriesAnalysis.addTemps(testArray), expRes);
     }
 }
