@@ -7,6 +7,7 @@ public class TemperatureSeriesAnalysis {
 
     private double[] temperatureSeries;
     private int size;
+    static final int MIN = -273;
 
     public TemperatureSeriesAnalysis() {
         throw new IllegalArgumentException();
@@ -14,7 +15,7 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] < -273) {
+            if (temperatureSeries[i] < MIN) {
                 throw new InputMismatchException();
             }
         }
@@ -78,8 +79,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = this.temperatureSeries[0];
         for (int i = 1; i < size; i++) {
-            if (Math.abs(closest) > Math.abs(this.temperatureSeries[i]) || 
-                Math.abs(closest) == this.temperatureSeries[i]) {
+            if ((Math.abs(closest) - Math.abs(this.temperatureSeries[i]) > 0) 
+                || Math.abs(closest) == this.temperatureSeries[i]) {
                 closest = this.temperatureSeries[i];
             }
         }
@@ -92,8 +93,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = this.temperatureSeries[0];
         for (int i = 1; i < size; i++) {
-            if (Math.abs(tempValue - closest) > 
-                Math.abs(tempValue - this.temperatureSeries[i])) {
+            if (Math.abs(tempValue - closest) 
+                > Math.abs(tempValue - this.temperatureSeries[i])) {
                 closest = this.temperatureSeries[i];
             }
         }
@@ -144,7 +145,7 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double[] temps) {
         for (int i = 0; i < temps.length; i++) {
-            if(this.temperatureSeries.length == size) {
+            if (this.temperatureSeries.length == size) {
                 double[] temp = new double[this.temperatureSeries.length];
                 for (int j = 0; j < this.temperatureSeries.length; j++) {
                     temp[j] = this.temperatureSeries[j];
