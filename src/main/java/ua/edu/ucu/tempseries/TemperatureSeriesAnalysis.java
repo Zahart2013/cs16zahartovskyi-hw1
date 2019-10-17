@@ -5,9 +5,9 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
 
+    static final int MIN = -273;
     private double[] temperatureSeries;
     private int size;
-    static final int MIN = -273;
 
     public TemperatureSeriesAnalysis() {
         throw new IllegalArgumentException();
@@ -42,7 +42,8 @@ public class TemperatureSeriesAnalysis {
         double sum = 0;
         double aver = this.average();
         for (int i = 0; i < size; i++) {
-            sum += Math.pow(this.temperatureSeries[i] - aver, 2);
+            sum += (this.temperatureSeries[i] - aver) 
+                * (this.temperatureSeries[i] - aver);
         }
         return Math.sqrt(sum / size);
     }
@@ -79,7 +80,7 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = this.temperatureSeries[0];
         for (int i = 1; i < size; i++) {
-            if ((Math.abs(closest) - Math.abs(this.temperatureSeries[i]) > 0) 
+            if (Math.abs(closest) - Math.abs(this.temperatureSeries[i] > 0) 
                 || Math.abs(closest) == this.temperatureSeries[i]) {
                 closest = this.temperatureSeries[i];
             }
