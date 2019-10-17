@@ -79,7 +79,7 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = this.temperatureSeries[0];
         for (int i = 1; i < size; i++) {
-            if (Math.abs(closest) - Math.abs(this.temperatureSeries[i] > 0) 
+            if ((Math.abs(closest) - Math.abs(this.temperatureSeries[i]) > 0) 
                 || Math.abs(closest) == this.temperatureSeries[i]) {
                 closest = this.temperatureSeries[i];
             }
