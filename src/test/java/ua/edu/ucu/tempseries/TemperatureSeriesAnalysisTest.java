@@ -10,6 +10,11 @@ public class TemperatureSeriesAnalysisTest {
     public void testTemperatureSeriesGen() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
     }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testTempSummaryGen() {
+        TempSummaryStatistics seriesSummary = new TempSummaryStatistics();
+    }
 
     @Test
     public void testAverageWithOneElementArray() {
