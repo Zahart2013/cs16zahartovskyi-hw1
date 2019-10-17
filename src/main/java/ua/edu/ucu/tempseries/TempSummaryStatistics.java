@@ -1,7 +1,5 @@
 package ua.edu.ucu.tempseries;
 
-import lombok.Getter;
-
 public class TempSummaryStatistics {
 
     private double avgTemp;
