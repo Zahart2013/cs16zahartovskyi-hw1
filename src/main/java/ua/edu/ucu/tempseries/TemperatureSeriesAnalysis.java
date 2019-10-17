@@ -19,7 +19,8 @@ public class TemperatureSeriesAnalysis {
                 throw new InputMismatchException();
             }
         }
-        this.temperatureSeries = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
+        this.temperatureSeries = Arrays.copyOf(temperatureSeries, 
+                                               temperatureSeries.length);
         size = temperatureSeries.length;
     }
 
@@ -78,7 +79,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = this.temperatureSeries[0];
         for (int i = 1; i < size; i++) {
-            if (Math.abs(closest) > Math.abs(this.temperatureSeries[i]) || Math.abs(closest) == this.temperatureSeries[i]) {
+            if (Math.abs(closest) > Math.abs(this.temperatureSeries[i]) || 
+                Math.abs(closest) == this.temperatureSeries[i]) {
                 closest = this.temperatureSeries[i];
             }
         }
@@ -91,7 +93,8 @@ public class TemperatureSeriesAnalysis {
         }
         double closest = this.temperatureSeries[0];
         for (int i = 1; i < size; i++) {
-            if (Math.abs(tempValue - closest) > Math.abs(tempValue - this.temperatureSeries[i])) {
+            if (Math.abs(tempValue - closest) > 
+                Math.abs(tempValue - this.temperatureSeries[i])) {
                 closest = this.temperatureSeries[i];
             }
         }
@@ -134,12 +137,15 @@ public class TemperatureSeriesAnalysis {
         if (size == 0) {
             throw new IllegalArgumentException();
         }
-        return new TempSummaryStatistics(this.average(), this.deviation(), this.max(), this.min());
+        return new TempSummaryStatistics(this.average(),
+                                         this.deviation(),
+                                         this.max(),
+                                         this.min());
     }
 
     public int addTemps(double[] temps) {
         for (int i = 0; i < temps.length; i++) {
-            if(this.temperatureSeries.length == size){
+            if(this.temperatureSeries.length == size) {
                 double[] temp = new double[this.temperatureSeries.length];
                 for (int j = 0; j < this.temperatureSeries.length; j++) {
                     temp[j] = this.temperatureSeries[j];
